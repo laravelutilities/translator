@@ -1,0 +1,25 @@
+{
+    "name": "laravelutilities/translator",
+    "description": "This package mainly combine all the files inside lang folder and give the wrapper which will either collect information from the combined file or as a fallback if particular key is not defined collect from original file through a helper",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ankit Vishwakarma",
+            "email": "ankit.vishwakarma@vfirst.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "LaravelUtility\\Translator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelUtility\\Translator\\TranslatorServiceProvider"
+            ]
+        }
+    }
+}
