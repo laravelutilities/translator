@@ -12,7 +12,8 @@ class PrepareTranslator extends Command
      *
      * @var string
      */
-    protected $signature = 'laravelutilities:prepareTranslator';
+    protected $signature = 'laravelutilities:prepareTranslator'
+            . '{--include= : Files to be included to create a transcript, if no value passed, will merge all the files except excluded ones}';
 
     /**
      * The console command description.
@@ -38,7 +39,13 @@ class PrepareTranslator extends Command
             foreach (glob(resource_path('lang/' . $lang) . '/*') as $file) {
                 
                 $filename = basename($file, '.php');
-                if(in_array($filename, config('translator.exclude_files'))) continue;
+                if((!empty($this->option('include'))
+                        && (!in_array($filename, explode(',', $this->option('include')))))
+                        || in_array($filename, config('translator.exclude_files')))
+                {
+                   continue;
+                }
+                info("merged files======>" . $filename);
                 $translator[$filename] = require_once($file);
             }
             $content = "<?php \n return " . var_export($translator, true) . ";\n";

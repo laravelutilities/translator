@@ -2,10 +2,9 @@
 
 namespace LaravelUtility\Translator;
 
-use App\Console\Commands\PrepareTranslator,
-    Illuminate\Support\ServiceProvider;
+use LaravelUtility\Translator\Console\Commands\PrepareTranslator;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
-
 
 class TranslatorServiceProvider extends ServiceProvider
 {
